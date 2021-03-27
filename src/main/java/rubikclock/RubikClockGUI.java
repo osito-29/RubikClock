@@ -2,6 +2,7 @@ package rubikclock;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class RubikClockGUI {
 
@@ -24,79 +25,38 @@ public class RubikClockGUI {
 
 //Create game board
         JPanel grid = new JPanel(new GridLayout(5,5));
-//        grid.add(new JButton(), 0, 1);
 
-/*
-
-        JPanel boardPanel = new JPanel();
-
-        for (int i= 0; i<5; i++){
-            for (int j = 0; j<5; j++){
-                JTextField field = new JTextField();
-                grid.add(field, i, j);
-            }
-        }
-
-        JPanel grid2 = new JPanel(new GridLayout(5,5));
-
-        for (int i= 0; i<5; i+=2){
-            for (int j = 0; j<5; j++){
-                JButton button = new JButton();
-                grid2.add(button, i, j);
-            }
-        }
-
-
-//        JPanel grid3 = new JPanel(new GridLayout(5,5));
-*/
+        Random random = new Random();
 
         for (int i= 0; i<5; i++) {
             for (int j = 0; j < 5; j++) {
-
                 if ((i == 1  || i == 3) && (j==1 || j ==3)){
                     JButton button = new JButton();
                     button.setText("+");
-                    button.setSize(100, 100);
+                    button.setFont(new Font("Arial", Font.BOLD, 20));
+                    button.setHorizontalAlignment(SwingConstants.CENTER);
+                    button.setPreferredSize(new Dimension(80,50));
                     grid.add(button, i, j);
                 }
                 else{
                     JTextField field = new JTextField();
                     if ((i+j)%2 == 1){
+                        field.setPreferredSize(new Dimension(80, 50));
                         field.setVisible(false);
+                    }
+                    else{
+                        field.setPreferredSize(new Dimension(100, 70));
+                        field.setEditable(false);
+                        int randnumber = random.nextInt(12)+1;
+
+                        field.setText(String.valueOf(randnumber));
+                        field.setFont(new Font("Arial", Font.BOLD, 20));
+                        field.setHorizontalAlignment(SwingConstants.CENTER);
                     }
                     grid.add(field, i, j);
                 }
             }
         }
-
-
-/*
-        for (int i= 0; i<5; i++){
-            for (int j = 0; j<5; j++){
-                if ((i+j)%2 == 0){
-                    if ((i == 1  || i == 3) && (j==1 || j ==3)){
-                        JButton button = new JButton();
-                        grid.add(button, i, j);
-                        grid.rep
-  */
-
-//                    }
-//                    else {
-//                        JTextField field = new JTextField();
-//                        grid.add(field, i, j);
-
-//                        JButton field = new JButton();
-//                        grid.add(field, 0, 0);
-//                    }
-//                }
-//                JTextField field = new JTextField();
-//                field.setEditable(false);
-//                field.setVisible(false);
-//                grid.add(field, i, j);
-//            }
-//        }
-
-
 
 //Make frames visible
 //        frame.getContentPane().add(grid);
