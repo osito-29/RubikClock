@@ -11,6 +11,8 @@ public class RubikClockGUI {
     public static JFrame frame;
     public static RubikClockBoardGUI board;
 
+    public static JPanel boardPanel;
+
     public RubikClockGUI(){
 
 //Create frame elements
@@ -21,10 +23,33 @@ public class RubikClockGUI {
 //Create menu items
         JMenuBar menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
-        JMenu newgameMenu = new JMenu("New game");
+        JMenuItem newgameMenu = new JMenuItem("New game");
         menuBar.add(newgameMenu);
-        JMenu exitMenu = new JMenu("Exit");
+
+        newgameMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                frame.remove(board.grid);
+                board = new RubikClockBoardGUI();
+                board.clocks = new Matrix();
+                frame.getContentPane().add(board.grid);
+                SwingUtilities.updateComponentTreeUI(frame);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+
+        JMenuItem exitMenu = new JMenuItem("Exit");
         menuBar.add(exitMenu);
+
+        exitMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                System.exit(0);
+            }
+        });
+
+
 
 //Create game board
 
@@ -35,9 +60,8 @@ public class RubikClockGUI {
         frame.getContentPane().add(board.grid);
         frame.pack();
         frame.setVisible(true);
-    }
 
-    public void Calculate() {
+//Setup exit button action
 
     }
 
@@ -55,22 +79,19 @@ public class RubikClockGUI {
 
             RubikClockBoardGUI.clocks.changeMatrix(i, j);
 
-//            System.out.println("Klikk "+ "i: " + i +"j: "+ j);
-
-//            System.out.println(RubikClockBoardGUI.clocks.getMatrix()[0][0]);
-
-//            int number = RubikClockBoardGUI.clocks.getMatrix()[0][0];
-
             frame.remove(board.grid);
-//            frame.remove()
-
-//            SwingUtilities.updateComponentTreeUI(frame);
 
             board = new RubikClockBoardGUI();
 
             frame.getContentPane().add(board.grid);
 
             SwingUtilities.updateComponentTreeUI(frame);
+
+//            board.clocks.isFinished() = true;
+
+            if(true){
+                JOptionPane.showMessageDialog(boardPanel, "Congartulations! You won the game!","Congratulations!", JOptionPane.PLAIN_MESSAGE);
+            }
 
         }
     }

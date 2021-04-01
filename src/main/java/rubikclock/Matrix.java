@@ -25,4 +25,16 @@ public class Matrix {
         mtx[(i/2)+1][j/2] = mtx[(i/2)+1][j/2]%12 +1;
         mtx[(i/2)+1][(j/2)+1] = mtx[(i/2)+1][(j/2)+1]%12 +1;
     }
+
+    public boolean isFinished(){
+        boolean finished = true;
+        for (int i = 0; i<3; i++){
+            for (int j = 0; j<3; j++){
+                if (this.mtx[i][j] !=12){
+                    finished = false;
+                }
+            }
+        }
+        return finished;
+    }
 }
