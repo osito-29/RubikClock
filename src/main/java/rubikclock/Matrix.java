@@ -20,9 +20,9 @@ public class Matrix {
     }
 
     public void changeMatrix (int i, int j) {
-        mtx[i/2][j/2] +=1;
-        mtx[i/2][(j/2)+1] +=1;
-        mtx[(i/2)+1][j/2] +=1;
-        mtx[(i/2)+1][(j/2)+1] +=1;
+        mtx[i/2][j/2] = mtx[i/2][j/2]%12 +1;
+        mtx[i/2][(j/2)+1] = mtx[i/2][(j/2)+1]%12 +1;
+        mtx[(i/2)+1][j/2] = mtx[(i/2)+1][j/2]%12 +1;
+        mtx[(i/2)+1][(j/2)+1] = mtx[(i/2)+1][(j/2)+1]%12 +1;
     }
 }

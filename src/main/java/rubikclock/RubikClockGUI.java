@@ -54,22 +54,19 @@ public class RubikClockGUI {
         public void actionPerformed(ActionEvent e){
 
             RubikClockBoardGUI.clocks.changeMatrix(i, j);
-            System.out.println("Klikk "+ "i: " + i +"j: "+ j);
 
-            System.out.println(RubikClockBoardGUI.clocks.getMatrix()[0][0]);
+//            System.out.println("Klikk "+ "i: " + i +"j: "+ j);
 
+//            System.out.println(RubikClockBoardGUI.clocks.getMatrix()[0][0]);
 
-            JTextField field = new JTextField();
-
-            int number = RubikClockBoardGUI.clocks.getMatrix()[0][0];
-
-            field.setText(String.valueOf(number));
+//            int number = RubikClockBoardGUI.clocks.getMatrix()[0][0];
 
             frame.remove(board.grid);
+//            frame.remove()
 
-            SwingUtilities.updateComponentTreeUI(frame);
+//            SwingUtilities.updateComponentTreeUI(frame);
 
-            RubikClockBoardGUI board = new RubikClockBoardGUI();
+            board = new RubikClockBoardGUI();
 
             frame.getContentPane().add(board.grid);
 
