@@ -2,13 +2,14 @@ package rubikclock;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class RubikClockGUI {
 
-
-
-    private JFrame frame;
+    public static JFrame frame;
+    public static RubikClockBoardGUI board;
 
     public RubikClockGUI(){
 
@@ -27,7 +28,7 @@ public class RubikClockGUI {
 
 //Create game board
 
-        RubikClockBoardGUI board = new RubikClockBoardGUI();
+        board = new RubikClockBoardGUI();
 
 //Make frames visible
 
@@ -38,6 +39,43 @@ public class RubikClockGUI {
 
     public void Calculate() {
 
+    }
+
+
+    static class ButtonListener implements ActionListener {
+
+        private int i, j;
+        public ButtonListener(int i, int j){
+
+            this.i = i;
+            this.j = j;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e){
+
+            RubikClockBoardGUI.clocks.changeMatrix(i, j);
+            System.out.println("Klikk "+ "i: " + i +"j: "+ j);
+
+            System.out.println(RubikClockBoardGUI.clocks.getMatrix()[0][0]);
+
+
+            JTextField field = new JTextField();
+
+            int number = RubikClockBoardGUI.clocks.getMatrix()[0][0];
+
+            field.setText(String.valueOf(number));
+
+            frame.remove(board.grid);
+
+            SwingUtilities.updateComponentTreeUI(frame);
+
+            RubikClockBoardGUI board = new RubikClockBoardGUI();
+
+            frame.getContentPane().add(board.grid);
+
+            SwingUtilities.updateComponentTreeUI(frame);
+
+        }
     }
 
 }

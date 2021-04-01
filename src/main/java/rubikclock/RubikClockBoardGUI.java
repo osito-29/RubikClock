@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 
 public class RubikClockBoardGUI {
 
-    JPanel grid = new JPanel(new GridLayout(5,5));
-    Matrix clocks = new Matrix();
+    public JPanel grid = new JPanel(new GridLayout(5,5));
+    public static Matrix clocks = new Matrix();
 
     public RubikClockBoardGUI(){
 
@@ -24,7 +24,7 @@ public class RubikClockBoardGUI {
                     button.setPreferredSize(new Dimension(80,50));
 
                     button.setName(String.valueOf(btncounter));
-                    button.addActionListener(new ButtonListener(i, j));
+                    button.addActionListener(new RubikClockGUI.ButtonListener(i, j));
                     grid.add(button, i, j);
                     btncounter ++;
                 }
@@ -50,7 +50,7 @@ public class RubikClockBoardGUI {
         }
 
     }
-
+/*
     class ButtonListener implements ActionListener{
 
         private int i, j;
@@ -67,8 +67,23 @@ public class RubikClockBoardGUI {
             System.out.println("Klikk "+ "i: " + i +"j: "+ j);
 
             System.out.println(clocks.getMatrix()[0][0]);
+
+
+            JTextField field = new JTextField();
+
+            int number = clocks.getMatrix()[0][0];
+
+            field.setText(String.valueOf(number));
+            grid.add(field, 0,0);
+
+//            RubikClockGUI gui2 = new RubikClockGUI();
+
+
+//            gui2.frame.getContentPane().add(board.grid);
+//            gui2.frame.remove(gui2.board);
+
         }
     }
-
+*/
 
 }
